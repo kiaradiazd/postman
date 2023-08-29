@@ -1,0 +1,479 @@
+{
+	"info": {
+		"_postman_id": "3b41e323-b0c9-4dc7-8803-7817bf413a67",
+		"name": "UsersRandom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24469633"
+	},
+	"item": [
+		{
+			"name": "users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const users = pm.response.json();\r",
+							"\r",
+							"pm.test(\"status code\", ()=> {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"\r",
+							"pm.test(\"Verificar edades mayores de 18 años\", ()=> {\r",
+							"    for (var i = 0; i < users.length; i++) {\r",
+							"        pm.expect(users[i].age).to.be.above(18);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Verificar formato de correos electrónicos\", ()=> {\r",
+							"    let emailFormat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$/;\r",
+							"    for (let i = 0; i < users.length; i++) {\r",
+							"        pm.expect(users[i].email).to.match(emailFormat);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Lupita Lupe\",\n        \"email\": \"lupi@example.com\",\n        \"age\": 19\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Kaxandra Diaz\",\n        \"email\": \"Kaxdi@example.com\",\n        \"age\": 25\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Alice Marb\",\n        \"email\": \"alice@example.com\",\n        \"age\": 28\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Robert Ramirez\",\n        \"email\": \"robert@example.com\",\n        \"age\": 35\n    },\n    {\n        \"id\": 5,\n        \"name\": \"Emma Wilson\",\n        \"email\": \"emma@example.com\",\n        \"age\": 22\n    },\n    {\n        \"id\": 6,\n        \"name\": \"William Davis\",\n        \"email\": \"william@example.com\",\n        \"age\": 40\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "newUser",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-mock-match-request-body",
+						"value": "true",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Maribel Campos\",\r\n    \"email\": \"mari@example.com\",\r\n    \"age\": 25\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/newUser",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"newUser"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-mock-match-request-body",
+								"value": "true",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Maribel Campos\",\r\n    \"email\": \"mari@example.com\",\r\n    \"age\": 25\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/newUser",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"newUser"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\r\n    {\r\n        \"message\": \"created\"\r\n    }\r\n]"
+				}
+			]
+		},
+		{
+			"name": "deleteUser",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const id = 2;\r",
+							"pm.globals.set(\"idDelete\", id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-mock-response-code",
+						"value": "200",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/users/deleteUser/:id",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"deleteUser",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "{{idDelete}}"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-mock-response-code",
+								"value": "200",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/users/deleteUser/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"deleteUser",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idDelete}}"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"message\": \"Delete bro\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "updateUser",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const id = 7;\r",
+							"pm.globals.set(\"idUpdate\", id);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-mock-response-code",
+						"value": "202",
+						"type": "text"
+					},
+					{
+						"key": "x-mock-match-request-body",
+						"value": "true",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": {{idUpdate}},\r\n    \"name\": \"Marbel Campos\",\r\n    \"email\": \"mari@example.com\",\r\n    \"age\": 25\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/updateUser/:id",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"updateUser",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "{{idUpdate}}"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-mock-response-code",
+								"value": "202",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-mock-match-request-body",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": {{idUpdate}},\r\n    \"name\": \"Marbel Campos\",\r\n    \"email\": \"mari@example.com\",\r\n    \"age\": 25\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/updateUser/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"updateUser",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idUpdate}}"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\r\n    {\r\n        \"message\": \"Update User\"\r\n    }\r\n]"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Header Content-type is application/json\", ()=> {",
+					"    pm.response.to.have.header(\"Content-type\")",
+					"    pm.response.to.be.header(\"Content-type\", \"application/json; charset=utf-8\")",
+					"})"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "idxd",
+			"value": "",
+			"disabled": true
+		},
+		{
+			"key": "usuarios",
+			"value": "",
+			"disabled": true
+		},
+		{
+			"key": "idDelete",
+			"value": ""
+		},
+		{
+			"key": "idUpdate",
+			"value": 7
+		}
+	]
+}

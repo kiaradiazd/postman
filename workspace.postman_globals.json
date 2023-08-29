@@ -1,0 +1,33 @@
+{
+	"id": "1371981e-85f2-4f34-8528-b8d18433a8c7",
+	"values": [
+		{
+			"key": "cards",
+			"value": "cards",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "idDelete",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "idUpdate",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "url",
+			"value": "https://3d6981c5-b064-4f78-8840-b73dd4ab4e97.mock.pstmn.io",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2023-08-29T03:15:53.888Z",
+	"_postman_exported_using": "Postman/10.17.2"
+}
